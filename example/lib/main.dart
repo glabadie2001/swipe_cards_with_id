@@ -62,19 +62,19 @@ class _MyHomePageState extends State<MyHomePage> {
       _swipeItems.add(SwipeItem(
           swipeeID: _names[i],
           content: Content(text: _names[i], color: _colors[i]),
-          likeAction: () {
+          likeAction: (String id) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text("Liked ${_names[i]}"),
               duration: Duration(milliseconds: 500),
             ));
           },
-          nopeAction: () {
+          nopeAction: (String id) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text("Nope ${_names[i]}"),
               duration: Duration(milliseconds: 500),
             ));
           },
-          superlikeAction: () {
+          superlikeAction: (String id) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text("Superliked ${_names[i]}"),
               duration: Duration(milliseconds: 500),

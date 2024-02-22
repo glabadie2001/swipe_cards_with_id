@@ -252,9 +252,9 @@ class MatchEngine extends ChangeNotifier {
 class SwipeItem extends ChangeNotifier {
   final dynamic content;
   final String swipeeID;
-  final Function? likeAction;
-  final Function? superlikeAction;
-  final Function? nopeAction;
+  final Function(String)? likeAction;
+  final Function(String)? superlikeAction;
+  final Function(String)? nopeAction;
   final Future Function(SlideRegion? slideRegion)? onSlideUpdate;
   Decision decision = Decision.undecided;
 
@@ -298,7 +298,7 @@ class SwipeItem extends ChangeNotifier {
     if (decision == Decision.undecided) {
       decision = Decision.superLike;
       try {
-        superlikeAction?.call();
+        superlikeAction?.call(this.swipeeID);
       } catch (e) {}
       notifyListeners();
     }
