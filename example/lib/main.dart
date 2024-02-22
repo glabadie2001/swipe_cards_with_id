@@ -60,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     for (int i = 0; i < _names.length; i++) {
       _swipeItems.add(SwipeItem(
+          swipeeID: _names[i],
           content: Content(text: _names[i], color: _colors[i]),
           likeAction: () {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(

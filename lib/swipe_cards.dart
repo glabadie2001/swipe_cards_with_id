@@ -251,6 +251,7 @@ class MatchEngine extends ChangeNotifier {
 
 class SwipeItem extends ChangeNotifier {
   final dynamic content;
+  final String swipeeID;
   final Function? likeAction;
   final Function? superlikeAction;
   final Function? nopeAction;
@@ -258,7 +259,8 @@ class SwipeItem extends ChangeNotifier {
   Decision decision = Decision.undecided;
 
   SwipeItem({
-    this.content,
+    required this.content,
+    required this.swipeeID,
     this.likeAction,
     this.superlikeAction,
     this.nopeAction,
@@ -276,7 +278,7 @@ class SwipeItem extends ChangeNotifier {
     if (decision == Decision.undecided) {
       decision = Decision.like;
       try {
-        likeAction?.call();
+        likeAction?.call(this.swipeeID);
       } catch (e) {}
       notifyListeners();
     }
@@ -286,7 +288,7 @@ class SwipeItem extends ChangeNotifier {
     if (decision == Decision.undecided) {
       decision = Decision.nope;
       try {
-        nopeAction?.call();
+        nopeAction?.call(this.swipeeID);
       } catch (e) {}
       notifyListeners();
     }
